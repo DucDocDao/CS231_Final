@@ -33,5 +33,5 @@ $$\hat{y} \in \lbrace L_1, L_2, L_3, L_4 \rbrace$$
     * **$L_3$ (Incorrect_Up):** The upward phase performed with technical errors.
     * **$L_4$ (Incorrect_Down):** The downward phase performed with technical errors.
  
-## 3️⃣ Dataset
+## 3️⃣ Method
 
