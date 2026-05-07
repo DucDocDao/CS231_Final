@@ -1,4 +1,4 @@
-# 💻 Real-Time AI Posture Correction for Bench Press Exercise Using MediaPipe and LSTM 💻
+# 💻🏋️ Real-Time AI Posture Correction for Bench Press Exercise Using MediaPipe and LSTM 🏋️💻
 ## 1️⃣ Abstract
 
 This project develops a real-time system to monitor and correct Bench Press technique using Computer Vision. By leveraging **MediaPipe** for high-precision pose estimation and **LSTM (Long Short-Term Memory)** networks for temporal sequence analysis, the system classifies movement phases into four distinct categories: Correct Up/Down and Incorrect Up/Down. The goal is to provide immediate feedback to practitioners, helping to optimize muscle engagement and minimize the risk of injury during heavy lifting.
