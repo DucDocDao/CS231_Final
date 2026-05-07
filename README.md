@@ -4,8 +4,11 @@
 - Only applies to one person exercising within the camera's frame.
 - The camera needs to be positioned parallel to the person exercising, so that their entire upper body and arms are clearly visible.
 - Each lowering and raising motion needs to last approximately 1 second, corresponding to a camera resolution of 30 fps.
-- For example:
+  <p align="center">
   <img width="299" height="538" alt="image" src="https://github.com/user-attachments/assets/b602fbed-7144-4bf7-81d3-a430b1fe4538" />
+  <br>
+  <em>Example of camera setup</em>
+  </p>
 ## 2️⃣ State the problem
 ### 2.1. Input Data
 
