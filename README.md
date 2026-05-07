@@ -1,5 +1,9 @@
 # 💻 Real-Time AI Posture Correction for Bench Press Exercise Using MediaPipe and LSTM 💻
-## 1️⃣ Project scope
+## 1️⃣ Abstract
+
+This project develops a real-time system to monitor and correct Bench Press technique using Computer Vision. By leveraging **MediaPipe** for high-precision pose estimation and **LSTM (Long Short-Term Memory)** networks for temporal sequence analysis, the system classifies movement phases into four distinct categories: Correct Up/Down and Incorrect Up/Down. The goal is to provide immediate feedback to practitioners, helping to optimize muscle engagement and minimize the risk of injury during heavy lifting.
+
+## 2️⃣ Project scope
 - The study only evaluates exercise posture by calculating the degree of elbow extension relative to the body.
 - Only applies to one person exercising within the camera's frame.
 - The camera needs to be positioned parallel to the person exercising, so that their entire upper body and arms are clearly visible.
@@ -9,7 +13,7 @@
   <br>
   <em>Example of camera setup</em>
   </p>
-## 2️⃣ State the problem
+## 3️⃣ State the problem
 ### 2.1. Input Data
 
 The system's input is a set of training samples $(X, \hat{y})$ extracted from self-recorded videos. Each sample represents a **1-second video segment** corresponding to a single phase of the movement (e.g., the eccentric or concentric phase). The data is represented as a time-series sequence $X$, consisting of $n$ consecutive feature frames:
@@ -33,5 +37,5 @@ $$\hat{y} \in \lbrace L_1, L_2, L_3, L_4 \rbrace$$
     * **$L_3$ (Incorrect_Up):** The upward phase performed with technical errors.
     * **$L_4$ (Incorrect_Down):** The downward phase performed with technical errors.
  
-## 3️⃣ Method
+## 4️⃣ Method
 
