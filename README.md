@@ -65,10 +65,13 @@ $$\theta' = \frac{\theta - \theta_{min}}{\theta_{max} - \theta_{min}}$$
 
 $$Velocity' = \frac{Velocity}{180}$$
 
-- **If a video segment exceeds 30 frames, the system uses `np.linspace` to select representative frames distributed evenly across the sequence.** `indices = np.linspace(0, len(temp_1_angles) - 1, window_size)`
+- If a video segment exceeds 30 frames, the system uses `np.linspace` to select representative frames distributed evenly across the sequence.
+
+  ```python
+  indices = np.linspace(0, len(temp_1_angles) - 1, window_size)
 
 ### 4.3. LSTM Model
-- **Input**: Feature sequence of shape $(Batch\_size, 30, 4)$.
+- **Input**: Feature sequence of shape $(Batch_size, 30, 4)$.
 - **LSTM Layer**: 1 layer with 32 hidden units.
 - **Overfitting Mitigation**: A Dropout layer (rate: 0.2) is inserted to prevent the model from over-memorizing the training set.
 - **Output**: The final layer classifies the input into 4 labels: Len_Dung(Up_Correct), Xuong_Dung(Down_Correct), Len_Sai(Up_Incorrect), Xuong_Sai(Down_Incorrect).
