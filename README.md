@@ -38,4 +38,45 @@ $$\hat{y} \in \lbrace L_1, L_2, L_3, L_4 \rbrace$$
     * **$L_4$ (Incorrect_Down):** The downward phase performed with technical errors.
  
 ## 4️⃣ Method
+### 4.1. MediaPipe Pose
+  <p align="center">
+  <img width="772" height="438" alt="MediaPipe" src="https://github.com/user-attachments/assets/4d2a0f83-326a-4ceb-919b-bae3cba424c4" />
+  <br>
+  </p>
+    
+- **Shoulder joint angle**: Let $A$ be the elbow, $B$ be the shoulder, and $C$ be the hip. The angle at the shoulder is determined using the vectors $\overrightarrow{BA}$ and $\overrightarrow{BC}$ according to the formula:
 
+$$\cos(\theta) = \frac{\vec{BA} \cdot \vec{BC}}{|\vec{BA}| \times |\vec{BC}|}$$
+
+- **Angular velocity**:
+
+$$\theta = \theta_t - \theta_{t-1}$$
+
+- **Feature vector**:
+
+$$v = [Angle_{left}, Angle_{right}, \theta_{left}, \theta_{right}]$$
+
+### 4.2. Normalization
+- **Angle Normalization**:
+
+$$\theta' = \frac{\theta - \theta_{min}}{\theta_{max} - \theta_{min}}$$
+
+- **Velocity Normalization**:
+
+$$Velocity' = \frac{Velocity}{180}$$
+
+- **If a video segment exceeds 30 frames, the system uses `np.linspace` to select representative frames distributed evenly across the sequence.** `indices = np.linspace(0, len(temp_1_angles) - 1, window_size)`
+
+### 4.3. LSTM Model
+- **Input**: Feature sequence of shape $(Batch\_size, 30, 4)$.
+- **LSTM Layer**: 1 layer with 32 hidden units.
+- **Overfitting Mitigation**: A Dropout layer (rate: 0.2) is inserted to prevent the model from over-memorizing the training set.
+- **Output**: The final layer classifies the input into 4 labels: Len_Dung(Up_Correct), Xuong_Dung(Down_Correct), Len_Sai(Up_Incorrect), Xuong_Sai(Down_Incorrect).
+- **Softmax**: A Softmax function converts the final output into probabilities for each class.
+
+### 4.4. Training process
+The model is trained using the **Adam** optimizer with a learning rate of $0.0005$. The chosen loss function is **Sparse Categorical Crossentropy**, with **Accuracy** as the primary evaluation metric. To ensure stability and generalization, **K-Fold Cross Validation** is applied. In each fold:
+- **Epochs**: 50
+- **Batch size**: 16
+- **Validation**: Data is drawn directly from the current fold.
+The model with the highest validation accuracy across all folds is saved as the **Best Model**.
